@@ -1,10 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
 <AnchorPane prefWidth="770.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
-      <Pane layoutX="4.0" prefHeight="667.0" prefWidth="766.0" />
+      <Pane layoutX="4.0" prefHeight="667.0" prefWidth="766.0">
+         <children>
+            <TabPane prefHeight="667.0" prefWidth="766.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="T">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tbl1" layoutX="33.0" layoutY="14.0" prefHeight="245.0" prefWidth="700.0">
+                                <columns>
+                                  <TableColumn fx:id="tbl1Col1" prefWidth="130.0" text="C1" />
+                                  <TableColumn fx:id="tbl1Col2" prefWidth="144.0" text="C2" />
+                                    <TableColumn fx:id="tbl1Col3" prefWidth="146.0" text="C2" />
+                                    <TableColumn fx:id="tbl1Col4" prefWidth="140.0" text="C2" />
+                                    <TableColumn fx:id="tbl1Col5" prefWidth="139.0" text="C2" />
+                                </columns>
+                              </TableView>
+                              <Button fx:id="btnEmpInfo" layoutX="33.0" layoutY="283.0" mnemonicParsing="false" onAction="#getEmployeeInfo" text="Employee info " />
+                              <Button fx:id="btnEmpRel" layoutX="33.0" layoutY="319.0" mnemonicParsing="false" onAction="#getEmployeeRelative" text="Employe Relative " />
+                              <Button fx:id="btnEmpAbs" layoutX="33.0" layoutY="353.0" mnemonicParsing="false" onAction="#getEmployeeAbsence" text="Employe Absence" />
+                              <Button fx:id="btnEmpSta" layoutX="33.0" layoutY="386.0" mnemonicParsing="false" onAction="#getEmployeeStatsGroup" text="Employe Statistics Group" />
+                              <Button fx:id="btnEmpQua" layoutX="33.0" layoutY="459.0" mnemonicParsing="false" onAction="#getEmployeeQualification" text="Employe Qualification" />
+                              <Button fx:id="btnEmpPor" layoutX="33.0" layoutY="421.0" mnemonicParsing="false" onAction="#getEmployeePortalSetup" text="Employe Portal Setup " />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="T">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children></Pane>
    </children>
 </AnchorPane>
