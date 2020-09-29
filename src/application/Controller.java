@@ -35,7 +35,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import tableModels.Table1;
+import tableModels.TableData;
+import tableModels.TableMetadata;
 import database.DataAccessLayer;
 
 public class Controller implements Initializable {
@@ -45,50 +46,87 @@ public class Controller implements Initializable {
 
 
     @FXML
-    private TableView<Table1> tbl1;
+    private TableView<TableData> tblData;
 
     @FXML
-    private TableColumn<Table1, String> tbl1Col1;
+    private TableColumn<TableData, String> tblDataCol1;
 
     @FXML
-    private TableColumn<Table1, String> tbl1Col2;
+    private TableColumn<TableData, String> tblDataCol2;
 
     @FXML
-    private TableColumn<Table1, String> tbl1Col3;
+    private TableColumn<TableData, String> tblDataCol3;
 
     @FXML
-    private TableColumn<Table1, String> tbl1Col4;
+    private TableColumn<TableData, String> tblDataCol4;
 
     @FXML
-    private TableColumn<Table1, String> tbl1Col5;
+    private TableColumn<TableData, String> tblDataCol5;
    
     @FXML
-    private Button btnEmpInfo;
+    private Button btnDataEmpInfo;
 
     @FXML
-    private Button btnEmpRel;
+    private Button btnDataEmpRel;
 
     @FXML
-    private Button btnEmpAbs;
+    private Button btnDataEmpAbs;
 
     @FXML
-    private Button btnEmpSta;
+    private Button btnDataEmpSta;
 
     @FXML
-    private Button btnEmpQua;
+    private Button btnDataEmpQua;
 
     @FXML
-    private Button btnEmpPor;
+    private Button btnDataEmpPor;
+    // TAB METADATA
+    @FXML
+    private Button btnMetadataEmpCol;
 
+    @FXML
+    private Button btnMetadataConstraints;
+
+    @FXML
+    private Button btnMetadataEmpMD;
+
+    @FXML
+    private Button btnMetadataMaxRows;
+
+    @FXML
+    private Button btnMetadataKeys;
+
+    @FXML
+    private Button btnMetadataTables;
+    
+    @FXML
+    private TableView<TableMetadata> tblMetadata;
+
+    @FXML
+    private TableColumn<TableMetadata,String> tblMetadataCol1;
+
+    @FXML
+    private TableColumn<TableMetadata,String> tblMetadataCol2;
+
+    @FXML
+    private TableColumn<TableMetadata,String> tblMetadataCol3;
+
+    @FXML
+    private TableColumn<TableMetadata,String> tblMetadataCol4;
 	//INITIALIZATOR
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		tbl1Col1.setCellValueFactory(new PropertyValueFactory<Table1,String>("col1"));
-		tbl1Col2.setCellValueFactory(new PropertyValueFactory<Table1,String>("col2"));
-		tbl1Col3.setCellValueFactory(new PropertyValueFactory<Table1,String>("col3"));
-		tbl1Col4.setCellValueFactory(new PropertyValueFactory<Table1,String>("col4"));
-		tbl1Col5.setCellValueFactory(new PropertyValueFactory<Table1,String>("col5"));
+		tblDataCol1.setCellValueFactory(new PropertyValueFactory<TableData,String>("col1"));
+		tblDataCol2.setCellValueFactory(new PropertyValueFactory<TableData,String>("col2"));
+		tblDataCol3.setCellValueFactory(new PropertyValueFactory<TableData,String>("col3"));
+		tblDataCol4.setCellValueFactory(new PropertyValueFactory<TableData,String>("col4"));
+		tblDataCol5.setCellValueFactory(new PropertyValueFactory<TableData,String>("col5"));
+		
+		tblMetadataCol1.setCellValueFactory(new PropertyValueFactory<TableMetadata,String>("col1"));
+		tblMetadataCol2.setCellValueFactory(new PropertyValueFactory<TableMetadata,String>("col2"));
+		tblMetadataCol3.setCellValueFactory(new PropertyValueFactory<TableMetadata,String>("col3"));
+		tblMetadataCol4.setCellValueFactory(new PropertyValueFactory<TableMetadata,String>("col4"));
 		try {
 			database = new DataAccessLayer();
 		} catch (SQLException e) {
@@ -99,21 +137,21 @@ public class Controller implements Initializable {
 	public void getEmployeeInfo() {
 		try {
 			ResultSet rs = database.getEmployeeInfo();
-			ObservableList<Table1> data = FXCollections.observableArrayList();
+			ObservableList<TableData> data = FXCollections.observableArrayList();
 			while (rs.next()) {
 				String col1 = rs.getString(1);
 				String col2 = rs.getString(2);
 				String col3 = rs.getString(3);
 				String col4 = rs.getString(4);
 				String col5 = rs.getString(5);
-				data.add(new Table1(col1, col2, col3, col4, col5));
+				data.add(new TableData(col1, col2, col3, col4, col5));
 			}
-			tbl1.setItems(data);
-			tbl1Col1.setText("First Name");
-			tbl1Col2.setText("Last Name");
-			tbl1Col3.setText("Job Title");
-			tbl1Col4.setText("Address");
-			tbl1Col5.setText("E-Mail");
+			tblData.setItems(data);
+			tblDataCol1.setText("First Name");
+			tblDataCol2.setText("Last Name");
+			tblDataCol3.setText("Job Title");
+			tblDataCol4.setText("Address");
+			tblDataCol5.setText("E-Mail");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -122,21 +160,21 @@ public class Controller implements Initializable {
 	public void getEmployeeRelative() {
 		try {
 			ResultSet rs = database.getEmployeeRelative();
-			ObservableList<Table1> data = FXCollections.observableArrayList();
+			ObservableList<TableData> data = FXCollections.observableArrayList();
 			while (rs.next()) {
 				String col1 = rs.getString(1);
 				String col2 = rs.getString(2);
 				String col3 = rs.getString(3);
 				String col4 = rs.getString(4);
 				String col5 = rs.getString(5);
-				data.add(new Table1(col1, col2, col3, col4, col5));
+				data.add(new TableData(col1, col2, col3, col4, col5));
 			}
-			tbl1.setItems(data);	
-			tbl1Col1.setText("Emp. No");
-			tbl1Col2.setText("Relative Code");
-			tbl1Col3.setText("First Name");
-			tbl1Col4.setText("Last Name");
-			tbl1Col5.setText("Birth Date");
+			tblData.setItems(data);	
+			tblDataCol1.setText("Emp. No");
+			tblDataCol2.setText("Relative Code");
+			tblDataCol3.setText("First Name");
+			tblDataCol4.setText("Last Name");
+			tblDataCol5.setText("Birth Date");
 			
 		} catch (SQLException e) {
 			
@@ -147,21 +185,21 @@ public class Controller implements Initializable {
 	public void getEmployeeAbsence() {
 		try {
 			ResultSet rs = database.getEmployeeAbsence();
-			ObservableList<Table1> data = FXCollections.observableArrayList();
+			ObservableList<TableData> data = FXCollections.observableArrayList();
 			while (rs.next()) {
 				String col1 = rs.getString(1);
 				String col2 = rs.getString(2);
 				String col3 = rs.getString(3);
 				String col4 = rs.getString(4);
 				String col5 = rs.getString(5);
-				data.add(new Table1(col1, col2, col3, col4, col5));
+				data.add(new TableData(col1, col2, col3, col4, col5));
 			}
-			tbl1.setItems(data);	
-			tbl1Col1.setText("Entry No");
-			tbl1Col2.setText("Emp. No");
-			tbl1Col3.setText("From Date");
-			tbl1Col4.setText("To Date");
-			tbl1Col5.setText("Description");
+			tblData.setItems(data);	
+			tblDataCol1.setText("Entry No");
+			tblDataCol2.setText("Emp. No");
+			tblDataCol3.setText("From Date");
+			tblDataCol4.setText("To Date");
+			tblDataCol5.setText("Description");
 		} catch (SQLException e) {
 			
 		}
@@ -171,21 +209,21 @@ public class Controller implements Initializable {
 	public void getEmployeeQualification() {
 		try {
 			ResultSet rs = database.getEmployeeQualification();
-			ObservableList<Table1> data = FXCollections.observableArrayList();
+			ObservableList<TableData> data = FXCollections.observableArrayList();
 			while (rs.next()) {
 				String col1 = rs.getString(1);
 				String col2 = rs.getString(2);
 				String col3 = rs.getString(3);
 				String col4 = rs.getString(4);
 				String col5 = rs.getString(5);
-				data.add(new Table1(col1, col2, col3, col4, col5));
+				data.add(new TableData(col1, col2, col3, col4, col5));
 			}
-			tbl1.setItems(data);	
-			tbl1Col1.setText("Emp. No");
-			tbl1Col2.setText("From Date");
-			tbl1Col3.setText("To Date");
-			tbl1Col4.setText("Description");
-			tbl1Col5.setText("Company");
+			tblData.setItems(data);	
+			tblDataCol1.setText("Emp. No");
+			tblDataCol2.setText("From Date");
+			tblDataCol3.setText("To Date");
+			tblDataCol4.setText("Description");
+			tblDataCol5.setText("Company");
 		} catch (SQLException e) {
 			
 		}
@@ -195,21 +233,21 @@ public class Controller implements Initializable {
 	public void getEmployeeStatsGroup() {
 		try {
 			ResultSet rs = database.getEmployeeStatsGroup();
-			ObservableList<Table1> data = FXCollections.observableArrayList();
+			ObservableList<TableData> data = FXCollections.observableArrayList();
 			while (rs.next()) {
 				String col1 = rs.getString(1);
 				String col2 = rs.getString(2);
-				String col3 = rs.getString(3);
+				String col3 = rs.getString(3);				
 				String col4 = "";
 				String col5 = "";
-				data.add(new Table1(col1, col2, col3, col4, col5));
+				data.add(new TableData(col1, col2, col3, col4, col5));
 			}
-			tbl1.setItems(data);	
-			tbl1Col1.setText("Timestamp");
-			tbl1Col2.setText("Code");
-			tbl1Col3.setText("Description");
-			tbl1Col4.setText("");
-			tbl1Col5.setText("");
+			tblData.setItems(data);	
+			tblDataCol1.setText("Timestamp");
+			tblDataCol2.setText("Code");
+			tblDataCol3.setText("Description");
+			tblDataCol4.setText("");
+			tblDataCol5.setText("");
 		} catch (SQLException e) {
 			
 		}
@@ -219,25 +257,204 @@ public class Controller implements Initializable {
 	public void getEmployeePortalSetup() {
 		try {
 			ResultSet rs = database.getEmployeePortalSetup();
-			ObservableList<Table1> data = FXCollections.observableArrayList();
+			ObservableList<TableData> data = FXCollections.observableArrayList();
 			while (rs.next()) {
 				String col1 = rs.getString(1);
 				String col2 = rs.getString(2);
 				String col3 = rs.getString(3);
 				String col4 = rs.getString(4);
 				String col5 = rs.getString(5);
-				data.add(new Table1(col1, col2, col3, col4, col5));
+				data.add(new TableData(col1, col2, col3, col4, col5));
 			}
-			tbl1.setItems(data);	
-			tbl1Col1.setText("First Name");
-			tbl1Col2.setText("Last Name");
-			tbl1Col3.setText("Job Title");
-			tbl1Col4.setText("Address");
-			tbl1Col5.setText("E-Mail");
+			tblData.setItems(data);	
+			tblDataCol1.setText("First Name");
+			tblDataCol2.setText("Last Name");
+			tblDataCol3.setText("Job Title");
+			tblDataCol4.setText("Address");
+			tblDataCol5.setText("E-Mail");
 		} catch (SQLException e) {
 			
 		}
 	}
 
+	
+	
+	
+	
+	@FXML
+	public void getKeys() {
+		try {
+			ResultSet rs = database.getKeys();
+			ObservableList<TableMetadata> data = FXCollections.observableArrayList();
+			while (rs.next()) {
+				String col1 = rs.getString(1);
+				String col2 = "";
+				String col3 = "";
+				String col4 = "";
+				
+				data.add(new TableMetadata(col1, col2, col3, col4));
+			}
+			tblMetadata.setItems(data);
+			tblMetadataCol1.setText("Column Name");
+			tblMetadataCol2.setText("");
+			tblMetadataCol3.setText("");
+			tblMetadataCol4.setText("");
+			double maxWidth = tblMetadata.getPrefWidth();
+			tblMetadataCol1.setPrefWidth(maxWidth);
+			tblMetadataCol2.setPrefWidth(0);
+			tblMetadataCol3.setPrefWidth(0);
+			tblMetadataCol4.setPrefWidth(0);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void getConstraints() {
+		try {
+			ResultSet rs = database.getConstraints();
+			ObservableList<TableMetadata> data = FXCollections.observableArrayList();
+			while (rs.next()) {
+				String col1 = rs.getString(1);
+				String col2 = "";
+				String col3 = "";
+				String col4 = "";
+				
+				data.add(new TableMetadata(col1, col2, col3, col4));
+			}
+			tblMetadata.setItems(data);
+			tblMetadataCol1.setText("Constraint Name");
+			tblMetadataCol2.setText("");
+			tblMetadataCol3.setText("");
+			tblMetadataCol4.setText("");
+			double maxWidth = tblMetadata.getPrefWidth();
+			tblMetadataCol1.setPrefWidth(maxWidth);
+			tblMetadataCol2.setPrefWidth(0);
+			tblMetadataCol3.setPrefWidth(0);
+			tblMetadataCol4.setPrefWidth(0);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void getTables() {
+		try {
+			ResultSet rs = database.getTables();
+			ObservableList<TableMetadata> data = FXCollections.observableArrayList();
+			while (rs.next()) {
+				String col1 = rs.getString(1);
+				String col2 = "";
+				String col3 = "";
+				String col4 = "";
+				
+				data.add(new TableMetadata(col1, col2, col3, col4));
+			}
+			tblMetadata.setItems(data);
+			tblMetadataCol1.setText("Table Name");
+			tblMetadataCol2.setText("");
+			tblMetadataCol3.setText("");
+			tblMetadataCol4.setText("");
+			double maxWidth = tblMetadata.getPrefWidth();
+			tblMetadataCol1.setPrefWidth(maxWidth);
+			tblMetadataCol2.setPrefWidth(0);
+			tblMetadataCol3.setPrefWidth(0);
+			tblMetadataCol4.setPrefWidth(0);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void getEmployeeColumns() {
+		try {
+			ResultSet rs = database.getEmployeeColumns();
+			ObservableList<TableMetadata> data = FXCollections.observableArrayList();
+			while (rs.next()) {
+				String col1 = rs.getString(1);
+				String col2 = "";
+				String col3 = "";
+				String col4 = "";
+				
+				data.add(new TableMetadata(col1, col2, col3, col4));
+			}
+			tblMetadata.setItems(data);
+			tblMetadataCol1.setText("Column Name");
+			tblMetadataCol2.setText("");
+			tblMetadataCol3.setText("");
+			tblMetadataCol4.setText("");
+			double maxWidth = tblMetadata.getPrefWidth();
+			tblMetadataCol1.setPrefWidth(maxWidth);
+			tblMetadataCol2.setPrefWidth(0);
+			tblMetadataCol3.setPrefWidth(0);
+			tblMetadataCol4.setPrefWidth(0);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void getEmployeeMetadata() {
+		try {
+			ResultSet rs = database.getEmployeeMetadata();
+			ObservableList<TableMetadata> data = FXCollections.observableArrayList();
+			while (rs.next()) {
+				String col1 = rs.getString(1);
+				String col2 = rs.getString(2);
+				String col3 = rs.getString(3);
+				String col4 = rs.getString(4);
+				
+				data.add(new TableMetadata(col1, col2, col3, col4));
+			}
+			tblMetadata.setItems(data);
+			tblMetadataCol1.setText("Catalog");
+			tblMetadataCol2.setText("Schema");
+			tblMetadataCol3.setText("Name");
+			tblMetadataCol4.setText("Type");
+			double maxWidth = tblMetadata.getPrefWidth();
+			tblMetadataCol1.setPrefWidth(maxWidth/4);
+			tblMetadataCol2.setPrefWidth(maxWidth/4);
+			tblMetadataCol3.setPrefWidth(maxWidth/4);
+			tblMetadataCol4.setPrefWidth(maxWidth/4);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void getMaxRowsTable() {
+		try {
+			ResultSet rs = database.getMaxRowsTable();
+			ObservableList<TableMetadata> data = FXCollections.observableArrayList();
+			while (rs.next()) {
+				String col1 = rs.getString(1);
+				String col2 = "";
+				String col3 = "";
+				String col4 = "";
+				
+				data.add(new TableMetadata(col1, col2, col3, col4));
+			}
+			tblMetadata.setItems(data);
+			tblMetadataCol1.setText("Table Name");
+			tblMetadataCol2.setText("");
+			tblMetadataCol3.setText("");
+			tblMetadataCol4.setText("");
+			double maxWidth = tblMetadata.getPrefWidth();
+			tblMetadataCol1.setPrefWidth(maxWidth);
+			tblMetadataCol2.setPrefWidth(0);
+			tblMetadataCol3.setPrefWidth(0);
+			tblMetadataCol4.setPrefWidth(0);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 
 }

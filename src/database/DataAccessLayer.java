@@ -55,4 +55,51 @@ public class DataAccessLayer {
 		ResultSet rs = ps.executeQuery();
 		return rs;
 	}
+
+
+	public ResultSet getKeys() throws SQLException {
+		String query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE";
+		PreparedStatement ps = con.prepareStatement(query);
+		ResultSet rs = ps.executeQuery();
+		return rs;
+	}
+	
+	public ResultSet getConstraints() throws SQLException {
+		String query = "SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS";
+		PreparedStatement ps = con.prepareStatement(query);
+		ResultSet rs = ps.executeQuery();
+		return rs;
+	}
+
+	public ResultSet getTables() throws SQLException {
+		String query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'";
+		PreparedStatement ps = con.prepareStatement(query);
+		ResultSet rs = ps.executeQuery();
+		return rs;
+	}
+
+	public ResultSet getEmployeeColumns() throws SQLException {
+		String query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'CRONUS Sverige AB$Employee'";
+		PreparedStatement ps = con.prepareStatement(query);
+		ResultSet rs = ps.executeQuery();
+		return rs;
+	}
+
+	public ResultSet getEmployeeMetadata() throws SQLException {
+		String query = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE '%AB$Employee%'";
+		PreparedStatement ps = con.prepareStatement(query);
+		ResultSet rs = ps.executeQuery();
+		return rs;
+	}
+
+	public ResultSet getMaxRowsTable() throws SQLException {
+		String query = "SELECT t.name FROM sys.tables t WHERE t.object_id IN (SELECT p1.object_id FROM sys.partitions p1 WHERE p1.rows = (SELECT MAX(p2.rows) FROM sys.partitions p2))";
+		PreparedStatement ps = con.prepareStatement(query);
+		ResultSet rs = ps.executeQuery();
+		return rs;
+	}
+
+
+
 }	
+
