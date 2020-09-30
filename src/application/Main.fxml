@@ -27,12 +27,12 @@
                                     <TableColumn fx:id="tblDataCol5" prefWidth="139.0" />
                                 </columns>
                               </TableView>
-                              <Button fx:id="btnDataEmpInfo" layoutX="33.0" layoutY="300.0" mnemonicParsing="false" onAction="#getEmployeeInfo" prefWidth="158.0" text="Employee info " />
-                              <Button fx:id="btnDataEmpRel" layoutX="33.0" layoutY="350.0" mnemonicParsing="false" onAction="#getEmployeeRelative" prefWidth="158.0" text="Employee Relative " />
-                              <Button fx:id="btnDataEmpAbs" layoutX="33.0" layoutY="400.0" mnemonicParsing="false" onAction="#getEmployeeAbsence" prefWidth="158.0" text="Employee Absence" />
-                              <Button fx:id="btnDataEmpSta" layoutX="33.0" layoutY="450.0" mnemonicParsing="false" onAction="#getEmployeeStatsGroup" prefWidth="158.0" text="Employee Statistics Group" />
-                              <Button fx:id="btnDataEmpQua" layoutX="33.0" layoutY="550.0" mnemonicParsing="false" onAction="#getEmployeeQualification" prefWidth="158.0" text="Employee Qualification" />
-                              <Button fx:id="btnDataEmpPor" layoutX="33.0" layoutY="500.0" mnemonicParsing="false" onAction="#getEmployeePortalSetup" prefWidth="158.0" text="Employee Portal Setup " />
+                              <Button fx:id="btnDataEmpInfo" layoutX="33.0" layoutY="311.0" mnemonicParsing="false" onAction="#getEmployeeInfo" prefWidth="158.0" text="Employee info " />
+                              <Button fx:id="btnDataEmpRel" layoutX="33.0" layoutY="361.0" mnemonicParsing="false" onAction="#getEmployeeRelative" prefWidth="158.0" text="Employee Relative " />
+                              <Button fx:id="btnDataEmpAbs" layoutX="33.0" layoutY="411.0" mnemonicParsing="false" onAction="#getEmployeeAbsence" prefWidth="158.0" text="Employee Absence" />
+                              <Button fx:id="btnDataEmpSta" layoutX="33.0" layoutY="461.0" mnemonicParsing="false" onAction="#getEmployeeStatsGroup" prefWidth="158.0" text="Employee Statistics Group" />
+                              <Button fx:id="btnDataEmpQua" layoutX="33.0" layoutY="561.0" mnemonicParsing="false" onAction="#getEmployeeQualification" prefWidth="158.0" text="Employee Qualification" />
+                              <Button fx:id="btnDataEmpPor" layoutX="33.0" layoutY="511.0" mnemonicParsing="false" onAction="#getEmployeePortalSetup" prefWidth="158.0" text="Employee Portal Setup " />
                            </children>
                         </AnchorPane>
                   </content>
@@ -41,13 +41,13 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="btnMetadataEmpCol" layoutX="552.0" layoutY="491.0" mnemonicParsing="false" onAction="#getEmployeeColumns" prefWidth="158.0" text="Columns In Employee" />
-                              <Button fx:id="btnMetadataConstraints" layoutX="552.0" layoutY="391.0" mnemonicParsing="false" onAction="#getConstraints" prefWidth="158.0" text="All Constraints" />
-                              <Button fx:id="btnMetadataEmpMD" layoutX="552.0" layoutY="541.0" mnemonicParsing="false" onAction="#getEmployeeMetadata" prefWidth="158.0" text="Metadata In Employee" />
-                              <Button fx:id="btnMetadataMaxRows" layoutX="552.0" layoutY="591.0" mnemonicParsing="false" onAction="#getMaxRowsTable" prefWidth="158.0" text="The Table With Most Rows" />
-                              <Button fx:id="btnMetadataKeys" layoutX="552.0" layoutY="341.0" mnemonicParsing="false" onAction="#getKeys" prefWidth="158.0" text="All Keys" />
-                              <Button fx:id="btnMetadataTables" layoutX="552.0" layoutY="441.0" mnemonicParsing="false" onAction="#getTables" prefWidth="158.0" text="All Tables" />
-                              <TableView fx:id="tblMetadata" layoutX="58.0" layoutY="16.0" prefHeight="600.0" prefWidth="424.0">
+                              <Button fx:id="btnMetadataEmpCol" layoutX="539.0" layoutY="461.0" mnemonicParsing="false" onAction="#getEmployeeColumns" prefWidth="158.0" text="Columns In Employee" />
+                              <Button fx:id="btnMetadataConstraints" layoutX="539.0" layoutY="361.0" mnemonicParsing="false" onAction="#getConstraints" prefWidth="158.0" text="All Constraints" />
+                              <Button fx:id="btnMetadataEmpMD" layoutX="539.0" layoutY="511.0" mnemonicParsing="false" onAction="#getEmployeeMetadata" prefWidth="158.0" text="Metadata In Employee" />
+                              <Button fx:id="btnMetadataMaxRows" layoutX="539.0" layoutY="561.0" mnemonicParsing="false" onAction="#getMaxRowsTable" prefWidth="158.0" text="The Table With Most Rows" />
+                              <Button fx:id="btnMetadataKeys" layoutX="539.0" layoutY="311.0" mnemonicParsing="false" onAction="#getKeys" prefWidth="158.0" text="All Keys" />
+                              <Button fx:id="btnMetadataTables" layoutX="539.0" layoutY="411.0" mnemonicParsing="false" onAction="#getTables" prefWidth="158.0" text="All Tables" />
+                              <TableView fx:id="tblMetadata" layoutX="33.0" layoutY="16.0" prefHeight="572.0" prefWidth="424.0">
                                 <columns>
                                   <TableColumn fx:id="tblMetadataCol1" prefWidth="106.0" />
                                   <TableColumn fx:id="tblMetadataCol2" prefWidth="106.0" />
